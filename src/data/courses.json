@@ -1,0 +1,44 @@
+[
+  {
+    "category": "Foundation",
+    "title": "Linux, YAML & Git",
+    "description": "Master the fundamentals of OS operations, configuration languages, and version control.",
+    "tools": ["Linux", "Bash", "YAML", "Git", "GitHub"],
+    "icon": "terminal"
+  },
+  {
+    "category": "Cloud & IaC",
+    "title": "AWS & Infrastructure as Code",
+    "description": "Architect and provision cloud resources securely and efficiently using code.",
+    "tools": ["AWS", "Terraform", "Ansible", "CloudFormation"],
+    "icon": "cloud"
+  },
+  {
+    "category": "CI/CD",
+    "title": "Continuous Integration & Deployment",
+    "description": "Automate software delivery pipelines from code commit to production.",
+    "tools": ["Jenkins", "Maven", "Tomcat", "GitHub Actions"],
+    "icon": "git-merge"
+  },
+  {
+    "category": "Containers",
+    "title": "Docker & Kubernetes",
+    "description": "Containerize applications and manage clusters at scale.",
+    "tools": ["Docker", "Kubernetes", "Helm", "ECR/EKS"],
+    "icon": "box"
+  },
+  {
+    "category": "Monitoring",
+    "title": "Observability & Logging",
+    "description": "Implement robust monitoring and alerting for enterprise applications.",
+    "tools": ["Prometheus", "Grafana", "ELK Stack", "CloudWatch"],
+    "icon": "activity"
+  },
+  {
+    "category": "AI/LLM",
+    "title": "GenAI in DevOps",
+    "description": "Leverage AI tools and LangChain for automated troubleshooting and log analysis.",
+    "tools": ["LangChain", "OpenAI", "Python", "Vector DBs"],
+    "icon": "cpu"
+  }
+]

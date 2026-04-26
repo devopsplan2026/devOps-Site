@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  devops-academy:
+    # Build from the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Optionally pass build args (e.g. for API URLs)
+      # args:
+      #   VITE_API_URL: https://api.example.com
+
+    container_name: devops-academy-web
+
+    # Map host port 8080 → container port 80
+    # Change 8080 to any available port on your machine
+    ports:
+      - "8090:80"
+
+    # Always restart the container unless explicitly stopped
+    restart: unless-stopped
+
+    # Health-check at the compose level
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+    # Resource limits (optional, recommended for production)
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 128M
+        reservations:
+          cpus: "0.10"
+          memory: 64M
