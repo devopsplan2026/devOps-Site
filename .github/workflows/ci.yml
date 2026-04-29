@@ -8,9 +8,9 @@ jobs:
 build-and-update:
 runs-on: ubuntu-latest
 
-```
+
 permissions:
-  contents: write   # required for git push
+  contents: write
 
 steps:
   - name: Checkout repository
@@ -30,6 +30,4 @@ steps:
     run: |
       docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hello-world:${{ steps.tag.outputs.value }} .
       docker push ${{ secrets.DOCKERHUB_USERNAME }}/hello-world:${{ steps.tag.outputs.value }}
-
- 
 
