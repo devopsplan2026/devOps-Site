@@ -4,7 +4,7 @@ pipeline {
    githubPush()
  }
  environment {
-   IMAGE = "hello-world"
+   IMAGE = "DevOps-Site"
  }
  stages {
    stage('Checkout') {
