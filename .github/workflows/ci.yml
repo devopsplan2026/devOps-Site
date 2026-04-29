@@ -26,5 +26,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/hello-world:${{ steps.tag.outputs.value }} .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/hello-world:${{ steps.tag.outputs.value }}
+          docker build -t ${{ secrets.DOCKER_USER }}/hello-world:${{ steps.tag.outputs.value }} .
+          docker push ${{ secrets.DOCKER_PASS }}/hello-world:${{ steps.tag.outputs.value }}
