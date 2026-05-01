@@ -1,0 +1,18 @@
+  apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: devops-site-sm
+  namespace: monitoring
+  labels:
+    release: prometheus        # must match Prometheus operator's serviceMonitorSelector
+spec:
+  selector:
+    matchLabels:
+      app: devops-site         # matches the Service label in k8s-manifest.yaml
+  namespaceSelector:
+    matchNames:
+    - default                  # namespace where devops-site-service lives
+  endpoints:
+  - port: http                 # matches the port name in devops-site-service
+    path: /metrics             # Flask metrics endpoint (requires prometheus-flask-exporter)
+    interval: 15s              # scrape every 15 seconds
