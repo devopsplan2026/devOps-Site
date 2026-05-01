@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * Throttle function - limits how often a function can be called
  * @param {Function} func - Function to throttle
@@ -49,14 +51,7 @@ export function useIntersectionObserver(ref, options = {}) {
       ...options
     });
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
 
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [ref, options]);
 
   return isVisible;
 }
