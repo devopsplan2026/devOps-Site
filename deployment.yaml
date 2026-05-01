@@ -1,0 +1,42 @@
+#######DEPLOYMENT.YAML#########
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-site
+  namespace: default
+  labels:
+    app: devops-site
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-site
+  template:
+    metadata:
+      labels:
+        app: devops-site
+    spec:
+      containers:
+      - name: flask
+        image: devopsplan2026/devops-site:latest
+        ports:
+        - containerPort: 5000
+---
+##########SERVICE.YAML#########
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-site-service
+  namespace: default
+  labels:
+    app: devops-site
+    release: prometheus
+spec:
+  selector:
+    app: devops-site
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP
