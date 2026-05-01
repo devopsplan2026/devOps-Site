@@ -1,0 +1,40 @@
+# Deploy the EKS cluster using Terraform (ensure AWS credentials are configured)
+cd terraform
+terraform init
+terraform apply -auto-approve
+
+# Return to project root
+cd ..
+
+# Add correct Helm repo (FIXED URL)
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+# Update repo
+helm repo update
+
+# Configure kubectl to connect to the EKS cluster
+aws eks update-kubeconfig --region us-east-1 --name my-cluster
+
+# Install Prometheus + Grafana stack with custom values for the project
+helm install prometheus prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --create-namespace \
+  --set grafana.adminPassword='admin' \
+  --set prometheus.service.type=ClusterIP \
+  --set grafana.service.type=ClusterIP
+
+# To access Grafana locally (after installation)
+# kubectl port-forward -n monitoring svc/prometheus-grafana 3000:80
+
+#######################
+# Requirements to add to your Flask app's requirements.txt
+
+prometheus-client==0.21.0
+prometheus-flask-exporter==0.23.2
+
+# In your app.py, add the following after creating the Flask app
+
+from prometheus_flask_exporter import PrometheusMetrics
+
+metrics = PrometheusMetrics(app)  # Enable /metrics endpoint
+
