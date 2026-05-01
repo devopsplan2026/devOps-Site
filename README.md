@@ -1,122 +1,102 @@
-# DevOps Academy 🚀
+# DevOps Academy Flask Application
 
-A production-ready React + Tailwind CSS landing page for **DevOps Academy** — Bengaluru's premier AWS DevOps & GenAI training institute.
+A clean, maintainable Python Flask application for the DevOps Academy landing page. This project includes a one-page course overview, roadmap, student testimonials, and an enrollment form.
 
-## 🛠 Tech Stack
-
-| Technology | Purpose |
-|---|---|
-| React 18 | UI framework |
-| Vite | Build tool |
-| Tailwind CSS 3 | Styling |
-| Framer Motion | Animations |
-| Lucide React | Icons |
-
-## 📁 Project Structure
+## Project Structure
 
 ```
-devops-academy/
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx        # Sticky animated navbar with mobile menu
-│   │   ├── Hero.jsx          # Hero section with stats + CTAs
-│   │   ├── About.jsx         # Institute info, location, learning modes
-│   │   ├── Curriculum.jsx    # Tabbed, filterable, searchable course cards
-│   │   ├── Roadmap.jsx       # Animated 3-month training timeline
-│   │   ├── Features.jsx      # Why-choose-us grid cards
-│   │   ├── Capstone.jsx      # AI Log Analyzer highlight card
-│   │   ├── Testimonials.jsx  # Auto-sliding review carousel
-│   │   ├── EnrollForm.jsx    # Enrollment form with validation
-│   │   ├── Contact.jsx       # Footer with contact details
-│   │   └── WhatsAppBtn.jsx   # Floating WhatsApp button
-│   ├── data/
-│   │   ├── courses.json      # Curriculum modules data
-│   │   ├── roadmap.json      # Monthly roadmap data
-│   │   └── testimonials.json # Student review data
-│   ├── App.jsx               # Main app composition
-│   ├── main.jsx              # React entry point
-│   └── index.css             # Global styles + Tailwind directives
-├── index.html                # HTML template with SEO meta tags
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-└── package.json
+DevOps-Site/
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── data/
+│   ├── courses.json
+│   ├── roadmap.json
+│   └── testimonials.json
+├── static/
+│   └── style.css
+└── templates/
+    ├── base.html
+    └── index.html
 ```
 
-## 🚀 Getting Started
+## Features
 
-### Prerequisites
+- Flask web app with one main route
+- Data-driven curriculum, roadmap, and testimonial sections
+- Enrollment form with server-side validation
+- Clean responsive UI and modern styling
+- No unnecessary frontend build tools or node dependencies
 
-- Node.js 18+ and npm
+## Prerequisites
 
-### Installation
+- Python 3.11+ installed
+- `pip` available
+
+## Setup from Scratch
+
+1. Clone the repository:
 
 ```bash
-# Clone or navigate to the project
-cd devops-academy
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
+git clone https://github.com/devopsplan2026/devOps-Site.git
+cd DevOps-Site
 ```
 
-The app will be available at **http://localhost:5173**
-
-## 🏗 Build for Production
+2. Create a Python virtual environment:
 
 ```bash
-npm run build
+python3 -m venv .venv
 ```
 
-Output is in the `dist/` folder — ready for static hosting.
+3. Activate the virtual environment:
 
-## ☁️ Deploy to Vercel
+macOS / Linux:
+```bash
+source .venv/bin/activate
+```
 
-### Option 1: Vercel CLI
+Windows PowerShell:
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+4. Install dependencies:
 
 ```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Login and deploy
-vercel login
-vercel --prod
+pip install -r requirements.txt
 ```
 
-### Option 2: Vercel Dashboard
-
-1. Push your project to a GitHub repository
-2. Go to [vercel.com](https://vercel.com) and click **New Project**
-3. Import your GitHub repository
-4. Framework preset: **Vite**
-5. Click **Deploy** — done!
-
-### Option 3: Deploy to AWS (S3 + CloudFront)
+5. Run the Flask application:
 
 ```bash
-# Build first
-npm run build
-
-# Sync dist/ to your S3 bucket
-aws s3 sync dist/ s3://your-bucket-name --delete
-
-# Invalidate CloudFront cache (optional)
-aws cloudfront create-invalidation \
-  --distribution-id YOUR_CF_DIST_ID \
-  --paths "/*"
+python app.py
 ```
 
-## 📞 Contact
+6. Open the app in your browser:
 
-| | |
-|---|---|
-| **Phone** | +91 97982-53860 |
-| **Email** | info@devopsacademy.co |
-| **Address** | BTM Layout, Bengaluru, Karnataka 560076 |
-| **Website** | www.devopsacademy.co |
+```
+http://127.0.0.1:5000
+```
 
----
+## Development Notes
 
-© 2026 DevOps Academy. All rights reserved.
+- The enrollment form posts to `/apply` and displays success or error messages.
+- Static page content is loaded from `data/*.json` for easy updates.
+- The app uses Flask templates and a separate CSS file for styling.
+
+## Clean Deployment
+
+To deploy this app on a new environment:
+
+1. Install Python.
+2. Clone the repo.
+3. Create and activate a virtual environment.
+4. Install dependencies from `requirements.txt`.
+5. Run `python app.py`.
+
+## Contact
+
+- Phone: +91 97982-53860
+- Email: info@devopsacademy.co
+- Location: BTM Layout, Bengaluru, Karnataka 560076
